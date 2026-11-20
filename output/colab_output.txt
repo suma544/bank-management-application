@@ -1,0 +1,184 @@
+Output captured from Google Colab (Python 3 runtime, g++ -std=c++17)
+Notebook: https://colab.research.google.com/github/suma544/bank-management-application/blob/main/Bank_Management_Application.ipynb
+Run date: 2026-11-20 (Colab time is UTC)
+
+### Cell 1: %%writefile bank_management.cpp
+Writing bank_management.cpp
+
+### Cell 2: !g++ -std=c++17 -Wall -o bank_management bank_management.cpp
+Compiled successfully
+
+### Cell 3: %%writefile sample_input.txt
+Writing sample_input.txt
+
+### Cell 4: !./bank_management < sample_input.txt
+
+======= BANK MANAGEMENT APPLICATION =======
+1. Create Account
+2. Deposit
+3. Withdraw
+4. Balance Enquiry
+5. Transaction History
+6. Display All Accounts
+7. Exit
+Enter your choice:
+--- Create Account ---
+Account holder name: Account type (1 = Savings, 2 = Current): Set 4-digit PIN: Initial deposit: Account created successfully! Your account number is 1001.
+
+======= BANK MANAGEMENT APPLICATION =======
+1. Create Account
+2. Deposit
+3. Withdraw
+4. Balance Enquiry
+5. Transaction History
+6. Display All Accounts
+7. Exit
+Enter your choice:
+--- Create Account ---
+Account holder name: Account type (1 = Savings, 2 = Current): Set 4-digit PIN: Initial deposit: Account created successfully! Your account number is 1002.
+
+======= BANK MANAGEMENT APPLICATION =======
+1. Create Account
+2. Deposit
+3. Withdraw
+4. Balance Enquiry
+5. Transaction History
+6. Display All Accounts
+7. Exit
+Enter your choice:
+--- Deposit ---
+Account number: 4-digit PIN: Amount to deposit: Deposited Rs. 2500.00. New balance: Rs. 7500.00
+
+======= BANK MANAGEMENT APPLICATION =======
+1. Create Account
+2. Deposit
+3. Withdraw
+4. Balance Enquiry
+5. Transaction History
+6. Display All Accounts
+7. Exit
+Enter your choice:
+--- Withdraw ---
+Account number: 4-digit PIN: Amount to withdraw: Withdrew Rs. 500.00. New balance: Rs. 1500.00
+
+======= BANK MANAGEMENT APPLICATION =======
+1. Create Account
+2. Deposit
+3. Withdraw
+4. Balance Enquiry
+5. Transaction History
+6. Display All Accounts
+7. Exit
+Enter your choice:
+--- Withdraw ---
+Account number: 4-digit PIN: Amount to withdraw: Withdrawal failed. Insufficient funds. Savings account must keep minimum balance of Rs. 500.00. Max you can withdraw: Rs. 7000.00
+
+======= BANK MANAGEMENT APPLICATION =======
+1. Create Account
+2. Deposit
+3. Withdraw
+4. Balance Enquiry
+5. Transaction History
+6. Display All Accounts
+7. Exit
+Enter your choice:
+--- Balance Enquiry ---
+Account number: 4-digit PIN: Access denied: invalid account number or PIN.
+
+======= BANK MANAGEMENT APPLICATION =======
+1. Create Account
+2. Deposit
+3. Withdraw
+4. Balance Enquiry
+5. Transaction History
+6. Display All Accounts
+7. Exit
+Enter your choice:
+--- Balance Enquiry ---
+Account number: 4-digit PIN: Account : 1001 (Savings)
+Holder  : Ravi Kumar
+Balance : Rs. 7500.00
+
+======= BANK MANAGEMENT APPLICATION =======
+1. Create Account
+2. Deposit
+3. Withdraw
+4. Balance Enquiry
+5. Transaction History
+6. Display All Accounts
+7. Exit
+Enter your choice:
+--- Transaction History ---
+Account number: 4-digit PIN: Date & Time          Type      Amount        Balance
+----------------------------------------------------------
+2026-11-20 08:20:30  OPEN      Rs. 5000.00   Rs. 5000.00
+2026-11-20 08:20:30  DEPOSIT   Rs. 2500.00   Rs. 7500.00
+
+======= BANK MANAGEMENT APPLICATION =======
+1. Create Account
+2. Deposit
+3. Withdraw
+4. Balance Enquiry
+5. Transaction History
+6. Display All Accounts
+7. Exit
+Enter your choice:
+--- All Accounts (2) ---
+Acc No    Holder              Type      Balance
+-------------------------------------------------------
+1001      Ravi Kumar          Savings   Rs. 7500.00
+1002      Priya Sharma        Current   Rs. 1500.00
+
+======= BANK MANAGEMENT APPLICATION =======
+1. Create Account
+2. Deposit
+3. Withdraw
+4. Balance Enquiry
+5. Transaction History
+6. Display All Accounts
+7. Exit
+Enter your choice: Thank you for banking with us. Data saved securely. Goodbye!
+
+### Cell 5: cat accounts.dat / transactions.txt  (PINs stored only as salted hashes)
+===== accounts.dat =====
+CHECKSUM 893e4f67cfb3cd81
+1001|Savings|Ravi Kumar|e674c1b949c79b8c|7500.00
+1002|Current|Priya Sharma|37b5e4ca73fceb5f|1500.00
+
+===== transactions.txt =====
+2026-11-20 08:20:30|1001|OPEN|5000.00|5000.00
+2026-11-20 08:20:30|1002|OPEN|2000.00|2000.00
+2026-11-20 08:20:30|1001|DEPOSIT|2500.00|7500.00
+2026-11-20 08:20:30|1002|WITHDRAW|500.00|1500.00
+
+### Cell 6: !printf '4\n1002\n4321\n7\n' | ./bank_management   (second run - data persists)
+
+======= BANK MANAGEMENT APPLICATION =======
+1. Create Account
+2. Deposit
+3. Withdraw
+4. Balance Enquiry
+5. Transaction History
+6. Display All Accounts
+7. Exit
+Enter your choice:
+--- Balance Enquiry ---
+Account number: 4-digit PIN: Account : 1002 (Current)
+Holder  : Priya Sharma
+Balance : Rs. 1500.00
+
+======= BANK MANAGEMENT APPLICATION =======
+1. Create Account
+2. Deposit
+3. Withdraw
+4. Balance Enquiry
+5. Transaction History
+6. Display All Accounts
+7. Exit
+Enter your choice: Thank you for banking with us. Data saved securely. Goodbye!
+
+### Cell 7: Security check - edit accounts.dat by hand, run program
+Edited balance of 1002 by hand to 99999.00, running program:
+WARNING: accounts.dat failed integrity check (file may be tampered).
+
+Original file restored.
